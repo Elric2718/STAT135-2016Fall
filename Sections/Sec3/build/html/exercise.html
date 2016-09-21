@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Section 8.10, Problem 44 &mdash; Section 3 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Section 3 1.0 documentation" href="index.html"/>
+        <link rel="prev" title="Black Scholes" href="black_scholes.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Section 3</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro_R.html">Introduction to R</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_R.html#rstudio-and-r">Rstudio and R</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="black_scholes.html">Black Scholes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Section 8.10, Problem 44</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Section 3</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Section 8.10, Problem 44</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/exercise.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="section-8-10-problem-44">
+<span id="exercise"></span><h1>Section 8.10, Problem 44<a class="headerlink" href="#section-8-10-problem-44" title="Permalink to this headline">¶</a></h1>
+<p>The file bodytemp contains normal body temperature
+readings (degrees Fahrenheit) and heart rates (beats
+per minute) of 65 males (coded by 1) and 65 females
+(coded by 2) from Shoemaker (1996). Assuming that the
+population distributions are normal (an assumption that
+will be investigated in a later chapter), estimate the
+body temperature means and standard deviations of the males and females.
+Form 95% confidence intervals for the means. Standard folklore is
+that the average body temperature is 98.6 degrees Fahenheit.
+Does this appear to be the case.</p>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>We first load the data and extract a basic information:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;~/Desktop/temp/bodytemp.csv&quot;</span><span class="p">)</span>
+
+<span class="n">n_m</span> <span class="o">&lt;-</span> <span class="n">length</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">n_fm</span> <span class="o">&lt;-</span> <span class="n">length</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Then we calculate the means and standard deviations respectively:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">## means</span>
+<span class="n">mean_temp_m</span> <span class="o">&lt;-</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">mean_temp_fm</span> <span class="o">&lt;-</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1">## standard deviations</span>
+
+<span class="n">sd_temp_m</span> <span class="o">&lt;-</span> <span class="n">sd</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sd_temp_fm</span> <span class="o">&lt;-</span> <span class="n">sd</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Recall that if</p>
+<blockquote>
+<div><span class="math">\(X_i \overset{iid}{\sim} N(\mu, \sigma^2), i = 1, \dots, n\)</span></div></blockquote>
+<p>then we have</p>
+<blockquote>
+<div><span class="math">\(\sqrt{n} \frac{\bar{X} - \mu}{S_n} \sim t_{n-1}\)</span></div></blockquote>
+<p>where</p>
+<blockquote>
+<div><span class="math">\(\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i,~S_n^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar{X})^2\)</span>.</div></blockquote>
+<p>This conclusion is important. You may use them as well in HW3.</p>
+<p>Let&#8217;s form the confidence interval now:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">interval_temp_m</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="n">mean_temp_m</span> <span class="o">-</span> <span class="n">sd_temp_m</span> <span class="o">*</span> <span class="n">qt</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+<span class="o">+</span>                      <span class="n">mean_temp_m</span> <span class="o">+</span> <span class="n">sd_temp_m</span> <span class="o">*</span> <span class="n">qt</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="n">interval_temp_m</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mf">97.93147</span> <span class="mf">98.27776</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">interval_temp_fm</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="n">mean_temp_fm</span> <span class="o">-</span> <span class="n">sd_temp_fm</span> <span class="o">*</span> <span class="n">qt</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+<span class="o">+</span>                      <span class="n">mean_temp_fm</span> <span class="o">+</span> <span class="n">sd_temp_fm</span> <span class="o">*</span> <span class="n">qt</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="n">interval_temp_fm</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mf">98.20962</span> <span class="mf">98.57807</span>
+</pre></div>
+</div>
+<p>The result seems not the case for standard folklore.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="black_scholes.html" class="btn btn-neutral" title="Black Scholes"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Yuting Ye.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

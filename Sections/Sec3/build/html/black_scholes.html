@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Black Scholes &mdash; Section 3 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Section 3 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Section 8.10, Problem 44" href="exercise.html"/>
+        <link rel="prev" title="Introduction to R" href="intro_R.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> Section 3</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro_R.html">Introduction to R</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro_R.html#rstudio-and-r">Rstudio and R</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Black Scholes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise.html">Section 8.10, Problem 44</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exercise.html#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Section 3</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Black Scholes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/black_scholes.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="black-scholes">
+<span id="id1"></span><h1>Black Scholes<a class="headerlink" href="#black-scholes" title="Permalink to this headline">¶</a></h1>
+<p>A convenctional way to compare the price of each day is to compare
+the &#8220;log Returns&#8221;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt; close.prices &lt;- as.numeric(gsub(&quot;,&quot;, &quot;&quot;, xom$Close))
+&gt; length(close.prices)
+[1] 252
+&gt;logReturns&lt;-log(close.prices[2:250]/close.prices[1:249])
+</pre></div>
+</div>
+<ul>
+<li><p class="first">We need to transform our data from a comma separated number, e.g., 2,000
+into 2000 before any data analysis.</p>
+</li>
+<li><p class="first">Why log returns?
+We can compare the prices of two consecutive days in many ways, e.g.,
+ratio, difference and what we did, log ratio. There are two reasons
+why we choose log ration.</p>
+<ul>
+<li><p class="first">Compare to difference, ratio is normalized. For example, we have no
+idea if the difference of 1 big enough. But ratio of 1.1 means
+the return of today has increased by 10% compared to that of yesterday.</p>
+</li>
+<li><p class="first">log transformation can also makes skewed data more &#8216;normal&#8217;.</p>
+<img alt="_images/zumel_fig_1.png" src="_images/zumel_fig_1.png" />
+</li>
+</ul>
+</li>
+<li><p class="first">R manipulates data in a vectorized way, including addition, multiplication
+and so on.</p>
+<p>We take a look at the logReturns:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">logReturns</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;l&quot;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s2">&quot;log Returns for EXXON&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">close</span><span class="o">.</span><span class="n">prices</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;l&quot;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s2">&quot;Closing price of EXXON&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/ClosePrices.png" src="_images/ClosePrices.png" />
+<img alt="_images/logReturns.png" src="_images/logReturns.png" />
+<ul class="simple">
+<li>We can see that log Returns looks much better than the Close prices because
+of the normalization.</li>
+</ul>
+</li>
+</ul>
+<p>Now suppose we&#8217;re traders and and want to choose whether to buy an option or not.
+Recall Black Scholes formula: Let <span class="math">\(S_t\)</span> be the price of a stock at time t.
+Popular statistical model:</p>
+<p><span class="math">\(Z_t = log \frac{S_{t + dt}}{S_t} \overset{iid}{\sim} N((\mu - \sigma^2/2)dt, \sigma^2 dt)\)</span></p>
+<p>Great result by Black-Scholes and Merton: consider an option that gives the right to
+buy the stock S at time, for a price K. Then</p>
+<p><span class="math">\(C(S_0, T, K, r, \sigma) = S_0\Phi(d_+) - K\Phi(d_{\_})exp(-rT)\)</span></p>
+<p>where</p>
+<p><span class="math">\(d_{\pm} = \frac{log(S_0/K) + (r \pm \frac{\sigma^2}{2})}{\sigma \sqrt{T}}\)</span></p>
+<p>Here, we have K = $95, T = 3 months, r = 0.25% pear year, <span class="math">\(S_0 = 88.65\)</span>, What
+would you do?</p>
+<ul>
+<li><p class="first">First we need to estimate the variance <span class="math">\(\hat{\sigma}^2\)</span>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>sigmahat &lt;- sqrt(var(logReturns[!is.infinite(logReturns)]) * 365) # make the unit in years
+</pre></div>
+</div>
+<p>Notice there are some outliers, which we do not want, and thus removing. Here,
+for simplicity, we treat the close prices are daily data, that is, the time interval for any two consecutive
+is one day. In reality, some intervals are one day, some are three days because of
+weekends and holidays.</p>
+</li>
+<li><p class="first">Use Black-Scholes:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">K</span> <span class="o">&lt;-</span> <span class="mi">95</span>
+<span class="o">&gt;</span> <span class="n">T</span> <span class="o">&lt;-</span> <span class="mi">3</span><span class="o">/</span><span class="mi">12</span> <span class="c1"># make the unit in years</span>
+<span class="o">&gt;</span> <span class="n">r</span> <span class="o">&lt;-</span> <span class="mf">0.25</span><span class="o">/</span><span class="mi">100</span>
+<span class="o">&gt;</span> <span class="n">S0</span> <span class="o">&lt;-</span> <span class="mf">88.65</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">d1</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">S0</span><span class="o">/</span><span class="n">K</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">sigmahat</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sigmahat</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="n">d2</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">S0</span><span class="o">/</span><span class="n">K</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">sigmahat</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sigmahat</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">C</span> <span class="o">&lt;-</span> <span class="n">S0</span> <span class="o">*</span> <span class="n">pnorm</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span> <span class="o">-</span> <span class="n">K</span> <span class="o">*</span> <span class="n">pnorm</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">C</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mf">1.011341</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use the delta method to assess the variablility of this estimator. Suppose
+that <span class="math">\(\hat{\sigma} \sim N(\sigma, D^2)\)</span>, with D known. We fix other quantities and let:</p>
+<blockquote>
+<div><p><span class="math">\(g(\sigma) = C(S_0, T, K, r, \sigma)\)</span></p>
+</div></blockquote>
+<p>Then by delta method, we have:</p>
+<blockquote>
+<div><p><span class="math">\(g(\hat{\sigma}) \sim N(g(\sigma), D^2[\frac{\partial}{\partial \sigma} g(\sigma)]^2)\)</span></p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="exercise.html" class="btn btn-neutral float-right" title="Section 8.10, Problem 44">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro_R.html" class="btn btn-neutral" title="Introduction to R"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Yuting Ye.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

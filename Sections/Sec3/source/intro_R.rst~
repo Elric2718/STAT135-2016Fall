@@ -1,0 +1,19 @@
+.. _intro_R:
+
+
+*****************************
+Introduction to R and Rstudio
+*****************************
+
+.. _install_Rstudio:
+
+Install Rstudio
+---------------
+Hopefully, you have downloaded R and Rstudio already. If you do have chance
+for it. Download R from `R <https://cran.rstudio.com/`_ and 
+Rstudio from  `Rstudio <https://www.rstudio.com/products/rstudio/download3/>`_.
+Please check your Operation System before downloading.
+
+
+
+   
