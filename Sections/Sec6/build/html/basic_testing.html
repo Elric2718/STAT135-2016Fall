@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Basics of Testing &#8212; Section 6 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Section 6 1.0 documentation" href="index.html" />
+    <link rel="next" title="Exercise" href="exercise.html" />
+    <link rel="prev" title="Welcome to Section 6" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="basics-of-testing">
+<span id="basic-testing"></span><h1>Basics of Testing<a class="headerlink" href="#basics-of-testing" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><p class="first">Introduction:</p>
+<p>In previous lectures, we&#8217;ve encountered point estimation, that is, estimate a paramter in
+a distributio and confidence interval. The two problems are the two main estimation problems in statistics.
+Other than estimation, we&#8217;re also interested in hypothesis testing. Literally, we have
+a hopothesis about the data, e.g., testing if the mean of the underlying distribution equal to 0,
+and then use some statistics tools to test if it&#8217;s true or not.</p>
+</li>
+<li><p class="first">Basics:</p>
+<ol class="arabic">
+<li><p class="first">We first have the null hypothesis <span class="math">\(H_0\)</span> and the alternative hypothesis <span class="math">\(H_1\)</span>.
+If <span class="math">\(H_0\)</span> (<span class="math">\(H_1\)</span>) specifies a distribution, e.g., it specifies the
+mean of the normal distribution given a unit variance, it&#8217;s called simple
+null (alternative) hypothesis.</p>
+</li>
+<li><p class="first">Once we have the hypotheses, we&#8217;ll come up with the test statistics, based on which
+we make the decision (accept or reject <span class="math">\(H_0\)</span>).</p>
+</li>
+<li><p class="first">Then we need to set a standard to accept the null hypothesis (reject the alternative) or reject the null (accept the alternative).
+Our goal is to control the possibility of making wrong decisions. There are two
+types of errors: Type I (II) error is rejecting (accepting) the null hypothesis when the underlying
+truth is the null (alternative) hypothesis. The probability of Type I (II) error
+is <span class="math">\(\alpha\)</span> (<span class="math">\(\beta\)</span>). We cannot control both simultaneously. We always
+first control Type I error <span class="math">\(\alpha\)</span>, then try to maximize <span class="math">\(1 - \beta\)</span>, i.e., the power.</p>
+</li>
+<li><p class="first">Finally we find a rejection region. If our test statistics falls in the region,
+we reject <span class="math">\(H_0\)</span>, otherwise we accept it. The rejection region is determined
+so that the test statistics will fall in it with the probabilty at most <span class="math">\(\alpha\)</span>
+if the underlying truth is <span class="math">\(H_0\)</span>. In most cases, the rejection region looks like
+<span class="math">\({T&gt;t}\)</span> or <span class="math">\({T&lt;t}\)</span>, where <span class="math">\(T\)</span> is the test statistics and <span class="math">\(t\)</span> is
+called the critical value. The most cases we&#8217;ll encounter are simples tests, of which,
+the rejection region can be computed by <em>likelihood ratio test</em>:</p>
+<p>Reject <span class="math">\(H_0\)</span> if <span class="math">\(\frac{f_0(X)}{f_1(X)}&lt;c(\alpha)\)</span></p>
+<p>where <span class="math">\(c(\alpha)\)</span> is an intermediate value (we may not figure out) which makes the rejection region satisfy
+our Type I error control level <span class="math">\(\alpha\)</span>. By Neyman-Pearson Lemma, <em>Likelihood ratio test</em> is
+the optimal. We&#8217;ll see many examples in today&#8217;s sections about how to do such tests.</p>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Section 6</a></li>
+      <li>Next: <a href="exercise.html" title="next chapter">Exercise</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/basic_testing.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Yuting Ye.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/basic_testing.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

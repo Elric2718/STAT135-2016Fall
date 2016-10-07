@@ -1,0 +1,85 @@
+.. _exercise_:
+
+========
+Exercise
+========      
+1. (Section 9.11 Problem 2) Which of the following hypothese are simple, and which are
+   composite?
+
+   a. :math:`X` follows a uniform distribution on :math:`[0, 1]`.
+   b. A die is unbiased.
+   c. :math:`X` follows a normal distribution with mean :math:`0` and variance :math:`\sigma^2>10`.
+   d. :math:`X` follows a normal distribution with :math:`\mu = 0`.
+
+   Solution:
+   
+   a. simple
+   b. simple
+   c. composite
+   d. composite
+
+2. (Section 9.11 Problem 3) Suppose that :math:`X\sim bin(100, p)`. Consider the test
+   that reject :math:`H_0:p=.5` in favor of :math:`H_A: p\neq .5` for :math:`|X-50|>10`.
+   Use the normal approximation to the binomial distribution to answer the following:
+   
+   a. What is :math:`\alpha`?
+   b. Graph the power as a function of :math:`p`.
+
+   Solution:
+   
+   a. By CLT, we have
+      :math:`\sqrt{100}\cdot \frac{(X/100 - p)}{\sqrt{p(1- p)}} \overset{d}{\rightarrow} N(0,1)`.
+      Under the null hypothesis, we can approximately take :math:`\sqrt{100}\cdot \frac{(X/100-.5)}{.5\cdot(1-.5)}\approx Z\sim N(0,1)`.
+      Thus :math:`|X - 50| \approx 5|Z|`. The rejection region :math:`|X - 50| > 10` is equivalent
+      to :math:`|Z| > 2`. Then by definition, :math:`\alpha = \mathbb{P}(|Z|>2) \approx 0.0455`.
+
+   b. Similary, we have the approximation :math:`\sqrt{100}\cdot \frac{X/100 - p}{\sqrt{p(1-p)}} \approx Z`,
+      which implies :math:`|X - 50| \approx |10\sqrt{p(1-p)}Z) + 100p -50|`. The power function is
+      :math:`\beta(p) = \mathbb{P}(|10\sqrt{p(1-p)}Z + 100p - 50|>10)=\mathbb{P}(Z>\frac{6-10p}{\sqrt{p(1-p}} ~or~ Z<\frac{4-10p}{\sqrt{p(1-p)}})`
+      The graph is as below:
+
+      .. image:: _static/power.png
+	 
+
+
+3. Let :math:`X` have one of the following distributions:
+   
+   ===========  ===========  ===========
+   :math:`X`    :math:`H_0`  :math:`H_1`
+   ===========  ===========  ===========
+   :math:`x_1`  .2           .1
+   :math:`x_2`  .3           .4
+   :math:`x_3`  .3           .1
+   :math:`x_4`  .2           .4
+   ===========  ===========  ===========
+
+   a. Compare the likelihood ratio, :math:`\Lambda`, for each possible value :math:`X`
+      and order the :math:`x_i` according to :math:`\Lambda`.
+   b. What is the likelihood ratio test of :math:`H_0` versus :math:`H_A` at level
+      :math:`\alpha = .2`? What is the test at level :math:`\alpha = .5`?
+
+   Solution:
+
+   
+
+4. A trial had the following characteristics. Recent research suggests dogs could be
+   helpful in detecting when a person has cancer. 6 dogs were enrolled in 9 trials. In
+   each of the 54 trials, one urine sample from patient with bladder cancer was randomly
+   placed among six control urine samples. In the 54 trails, the dogs made the correct
+   selection 22 times. Does this study provide evidence that the dogs' predictions are
+   better than random guessing? (Assume that it's OK to use the test we design for
+   Binomial data for simple vs simple and say whether or not you would reject thenull. Please
+   first formulate the null hypothesis and the alternative hypothesis).
+
+5. (Section 9.11 Problem 6) Consider the coin tossing example of Section 9.1. Suppose that instead of tossing
+   the coin 10 times, the coin was tossed until a head came up and the total number
+   of tosses, :math:`X`, was recorded.
+
+   c. What is the significance level of a test that rejects :math:`H_0` if :math:`X\geq 8`?
+   d. What is the power of this test?
+
+6. (Section 9.11 Problem 7) Let :math:`X_1, \dots, X_n` be a sample from a Poisson distribution.
+   Finde the likelihood ratio for testing :math:`H_0: \lambda = \lambda_0` versus :math:`H_A: \lambda = \lambda_1`,
+   where :math:`\lambda_1 > \lambda_0`. Use the fact that the sum of independnet Poisson random
+   variables follows a Poisson distribution to explain how to determine a rejection region
+   for a test at level :math:`\alpha`. And how to compute the power.

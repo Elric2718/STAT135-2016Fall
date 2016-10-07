@@ -1,0 +1,42 @@
+.. _exercise_:
+
+========
+Exercise
+========      
+1. (Section 9.11 Problem 2) Which of the following hypothese are simple, and which are
+   composite?
+
+   .. hidden-code-block:: R                                           |
+      :label: Solution                                                |
+      :linenos:
+
+      N <- 1
+
+4. 1
+   a. :math:`X` follows a uniform distribution on :math:`[0, 1]`.
+   b. A die is unbiased.
+   c. :math:`X` follows a normal distribution with mean :math:`0` and variance :math:`\sigma^2>10`.
+   d. :math:`X` follows a normal distribution with :math:`\mu = 0`.
+   
+   a. simple
+   b. simple
+   c. composite
+   d. composite
+
+2. (Section 9.11 Problem 3) Suppose that :math:`X\sim bin(100, p)`. Consider the test
+   that reject :math:`H_0:p=.5` in favor of :math:`H_A: p\neq .5` for :math:`|X-50|>10`.
+   Use the normal approximation to the binomial distribution to answer the following:
+   
+   a. What is :math:`\alpha`?
+   b. Graph the power as a function of :math:`p`.
+
+3. Let :math:`X` have one of the following distributions:
+   ===========  ===========  ===========
+   :math:`X`    :math:`H_0`  :math:`H_1`
+   ===========  ===========  ===========
+   :math:`x_1`  .2           .1
+   :math:`x_2`  .3           .4
+   :math:`x_3`  .3           .1
+   :math:`x_4`  .2           .4
+   ===========  ===========  ===========
+
