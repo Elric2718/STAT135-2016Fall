@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Problem 4 (Section 9.11 Problem 42) &#8212; Section 9 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Section 9 1.0 documentation" href="index.html" />
+    <link rel="next" title="Problem 5 (Section 9.11 Problem 43)" href="P5.html" />
+    <link rel="prev" title="Problem 3 (Section 9.11 Problem 41)" href="P3.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="problem-4-section-9-11-problem-42">
+<span id="problem4"></span><h1>Problem 4 (Section 9.11 Problem 42)<a class="headerlink" href="#problem-4-section-9-11-problem-42" title="Permalink to this headline">¶</a></h1>
+<p>Nylon bars were tested for brittleness (Bennett and Franklin 1954). Each of 280 bars was molded under similar conditions and was tested in five places. Assuming that each bar has uniform composition, the number of breaks on a given bar should be binomially distributed with five trials and an unknown probability p of failure. If the bars are all of the same uniform strength, p should be the same for all of them; if they are of different strengths, p should vary from bar to bar. Thus, the null hypothesis is that the p’s are all equal. The following table summarizes the outcome of the experiment:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Breaks/Bar</th>
+<th class="head">Frequency</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>157</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>69</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>35</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>17</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ol class="loweralpha simple">
+<li>Under the given assumption, the data in the table consist of 280 observations of independent binomial random variables. Find the mle of <span class="math">\(p\)</span>.</li>
+<li>Pooling the last three cells, test the agreement of the observed frequency distribution with the binomial distribution using Pearson’s chi-square test.</li>
+<li>Apply the test procedure derived in the previous problem.</li>
+</ol>
+<p>Solution:</p>
+<ol class="loweralpha">
+<li><p class="first">Suppose the number of breaks for each of the <span class="math">\(280\)</span> bars in 5 cases is <span class="math">\(y_i\)</span>, for <span class="math">\(i = 1, \dots, 280\)</span>.</p>
+<p>Under the null hypothesis, the mle of p is</p>
+<p><span class="math">\(hat{p}=\frac{157 \cdot 0 + 69 \cdot 1 + 35 \cdot 2 + 17 \cdot3 + 1 \cdot 4 + 1 \cdot 5}{5 \cdot 280} = 199/1400\)</span></p>
+</li>
+<li><p class="first">The Pearson&#8217;s chi-square statistics is</p>
+<p><span class="math">\(X^2 = \sum_{i=1}^m \frac{(x_i - n\hat{p})^2}{n\hat{p}}\)</span></p>
+<p>which has degrees of freedom as <span class="math">\(6 - 1 = 5\)</span>.</p>
+<p>Under the null hypothesis, <span class="math">\(p_k(\hat{p}) = {5 \choose k} \hat{p}^k (1 - \hat{p})^{5 - k}\)</span>, for <span class="math">\(k = 0, \dots, 5\)</span>. Or we have
+<span class="math">\(p_0(\hat{p}) = (1 - \hat{p})^5 = 0.46460\)</span>
+<span class="math">\(p_1(\hat{p}) = {5 \choose 1} \hat{p} \cdot (1 - \hat{p})^4 = 0.38491\)</span>
+<span class="math">\(p_2(\hat{p}) = {5 \choose 2}\hat{p}^2 (1 - \hat{p})^3 = 0.12755\)</span>
+<span class="math">\(p_3(\hat{p}) = {5 \choose 3} \hat{p}^3 (1 - \hat{p})^2 =  0.02114\)</span>
+<span class="math">\(p_4(\hat{p}) = {5 \choose 4} \hat{p}^4 (1 - \hat{p})0.00175\)</span>
+<span class="math">\(p_5(\hat{p}) = \hat{p}^5 = 0.00005\)</span>.</p>
+<p>Pooling the last three cells gives</p>
+<p><span class="math">\(X^2 = \frac{(17 - 280 \cdot 0.02114)^2}{280 \cdot 0.02114} + \frac{(1 - 280 \cdot 0.00175)^2}{280 \cdot 0.00175} + \frac{(1 - 280 \cdot 0.00005)^2}{280 \cdot 0.00005} = 90.71675\)</span></p>
+<p>where the corresonding p-value is 0 which implies that we should reject the null hypothesis.</p>
+</li>
+<li><p class="first">By the previous procedure, we have</p>
+<p><span class="math">\(X^2 = \sum_{i=1}^280 \frac{(x_i - 5 \cdot \hat{p})^2}{5 \cdot \hat{p}(1 - \hat{p})} = \frac{1}{5 \cdot \hat{p}(1 - \hat{p})} \cdot (157 \cdot (0 - 5 \cdot \hat{p})^2 + 69 \cdot (1 - 5 \cdot \hat{p})^2 + 35 \cdot (2 - 5 \cdot \hat{p})^2 + 17 \cdot (3 - 5 \cdot \hat{p})^2 + 1 \cdot (4 - 5 \cdot \hat{p})^2 + 1 \cdot (5 - 5 \cdot \hat{p})^2) = 429.0169\)</span></p>
+<p>which is a chi-square statistics with degrees of freedom as <span class="math">\(280 - 1 = 279\)</span>. The corresponding p-value is 0. So it also implies that we should reject the null hypothesis.</p>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="P3.html" title="previous chapter">Problem 3 (Section 9.11 Problem 41)</a></li>
+      <li>Next: <a href="P5.html" title="next chapter">Problem 5 (Section 9.11 Problem 43)</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/P4.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Yuting Ye.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/P4.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,18 @@
+.. _Problem1_:
+
+===================================
+Problem 1 (Section 9.11 Problem 23)
+===================================
+
+Suppose that a :math:`99\%` confidence interval for the mean :math:`\mu` of a normal distribution is found to be :math:`(-2.0, 3.0)`. Would a test of :math:`H_0: \mu = -3` versus :math:`H_A: \mu \neq -3` be rejected at the .01 significance level?
+
+Solution:
+
+Suppose the confidence interval is :math:`C(X)`, and the corresponding acceptance
+rejion is :math:`A(\mu)`. By the duality of confidence interval and hypothsis testing, we have
+
+     :math:`\mu \in C(X) \Leftrightarrow X \in A(\mu)`
+
+Thus, the :math:`99\%` confidence interval corresponds to that the hypothesis testthat accepts the null hypothesis with a probability of :math:`99\%` given :math:`H_0`, or the type I error is :math:`1 - 99\% = 1\%`, which means the significance level of the test is :math:`0.01`.
+
+However, :math:`-3 \not \in (-2.0, 3.0)`, which implies that the null is rejected.Hence, the test of :math:`H_0: \mu = -3` versus :math:`H_A: \mu \neq -3` is rejected at the :math:`0.01` significance level.

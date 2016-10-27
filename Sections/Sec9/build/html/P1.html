@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Problem 1 (Section 9.11 Problem 23) &#8212; Section 9 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Section 9 1.0 documentation" href="index.html" />
+    <link rel="prev" title="STAT135 Section 9" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="problem-1-section-9-11-problem-23">
+<span id="problem1"></span><h1>Problem 1 (Section 9.11 Problem 23)<a class="headerlink" href="#problem-1-section-9-11-problem-23" title="Permalink to this headline">¶</a></h1>
+<p>Suppose that a <span class="math">\(99\%\)</span> confidence interval for the mean <span class="math">\(\mu\)</span> of a normal distribution is found to be <span class="math">\((-2.0, 3.0)\)</span>. Would a test of <span class="math">\(H_0: \mu = -3\)</span> versus <span class="math">\(H_A: \mu \neq -3\)</span> be rejected at the .01 significance level?</p>
+<p>Solution:</p>
+<p>Suppose the confidence interval is <span class="math">\(C(X)\)</span>, and the corresponding acceptance
+rejion is <span class="math">\(A(\mu)\)</span>. By the duality of confidence interval and hypothsis testing, we have</p>
+<blockquote>
+<div><span class="math">\(\mu \in C(X) \Leftrightarrow X \in A(\mu)\)</span></div></blockquote>
+<p>Thus, the <span class="math">\(99\%\)</span> confidence interval corresponds to that the hypothesis testthat accepts the null hypothesis with a probability of <span class="math">\(99\%\)</span> given <span class="math">\(H_0\)</span>, or the type I error is <span class="math">\(1 - 99\% = 1\%\)</span>, which means the significance level of the test is <span class="math">\(0.01\)</span>.</p>
+<p>However, <span class="math">\(-3 \not \in (-2.0, 3.0)\)</span>, which implies that the null is rejected.Hence, the test of <span class="math">\(H_0: \mu = -3\)</span> versus <span class="math">\(H_A: \mu \neq -3\)</span> is rejected at the <span class="math">\(0.01\)</span> significance level.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">STAT135 Section 9</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/P1.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Yuting Ye.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/P1.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,60 @@
+.. _Problem4_:
+
+===================================
+Problem 4 (Section 9.11 Problem 42)
+===================================
+
+Nylon bars were tested for brittleness (Bennett and Franklin 1954). Each of 280 bars was molded under similar conditions and was tested in five places. Assuming that each bar has uniform composition, the number of breaks on a given bar should be binomially distributed with five trials and an unknown probability p of failure. If the bars are all of the same uniform strength, p should be the same for all of them; if they are of different strengths, p should vary from bar to bar. Thus, the null hypothesis is that the p’s are all equal. The following table summarizes the outcome of the experiment:
+
+========== =========
+Breaks/Bar Frequency
+========== =========
+    0         157
+    1         69
+    2         35
+    3         17
+    4          1
+    5          1
+========== =========
+
+a. Under the given assumption, the data in the table consist of 280 observations of independent binomial random variables. Find the mle of :math:`p`.
+
+b. Pooling the last three cells, test the agreement of the observed frequency distribution with the binomial distribution using Pearson’s chi-square test.
+
+c. Apply the test procedure derived in the previous problem.
+
+Solution:
+
+a. Suppose the number of breaks for each of the :math:`280` bars in 5 cases is :math:`y_i`, for :math:`i = 1, \dots, 280`.
+   
+   Under the null hypothesis, the mle of p is
+
+   :math:`hat{p}=\frac{157 \cdot 0 + 69 \cdot 1 + 35 \cdot 2 + 17 \cdot3 + 1 \cdot 4 + 1 \cdot 5}{5 \cdot 280} = 199/1400`
+
+b. The Pearson's chi-square statistics is
+
+   :math:`X^2 = \sum_{i=1}^m \frac{(x_i - n\hat{p})^2}{n\hat{p}}`
+
+   which has degrees of freedom as :math:`6 - 1 = 5`.
+
+   Under the null hypothesis, :math:`p_k(\hat{p}) = {5 \choose k} \hat{p}^k (1 - \hat{p})^{5 - k}`, for :math:`k = 0, \dots, 5`. Or we have
+   :math:`p_0(\hat{p}) = (1 - \hat{p})^5 = 0.46460`
+   :math:`p_1(\hat{p}) = {5 \choose 1} \hat{p} \cdot (1 - \hat{p})^4 = 0.38491`
+   :math:`p_2(\hat{p}) = {5 \choose 2}\hat{p}^2 (1 - \hat{p})^3 = 0.12755`
+   :math:`p_3(\hat{p}) = {5 \choose 3} \hat{p}^3 (1 - \hat{p})^2 =  0.02114`
+   :math:`p_4(\hat{p}) = {5 \choose 4} \hat{p}^4 (1 - \hat{p})0.00175`
+   :math:`p_5(\hat{p}) = \hat{p}^5 = 0.00005`.
+   
+   Pooling the last three cells gives
+
+   :math:`X^2 = \frac{(17 - 280 \cdot 0.02114)^2}{280 \cdot 0.02114} + \frac{(1 - 280 \cdot 0.00175)^2}{280 \cdot 0.00175} + \frac{(1 - 280 \cdot 0.00005)^2}{280 \cdot 0.00005} = 90.71675`
+
+   where the corresonding p-value is 0 which implies that we should reject the null hypothesis.
+
+   
+c. By the previous procedure, we have
+
+   :math:`X^2 = \sum_{i=1}^280 \frac{(x_i - 5 \cdot \hat{p})^2}{5 \cdot \hat{p}(1 - \hat{p})} = \frac{1}{5 \cdot \hat{p}(1 - \hat{p})} \cdot (157 \cdot (0 - 5 \cdot \hat{p})^2 + 69 \cdot (1 - 5 \cdot \hat{p})^2 + 35 \cdot (2 - 5 \cdot \hat{p})^2 + 17 \cdot (3 - 5 \cdot \hat{p})^2 + 1 \cdot (4 - 5 \cdot \hat{p})^2 + 1 \cdot (5 - 5 \cdot \hat{p})^2) = 429.0169`
+
+   which is a chi-square statistics with degrees of freedom as :math:`280 - 1 = 279`. The corresponding p-value is 0. So it also implies that we should reject the null hypothesis.
+   

@@ -1,0 +1,17 @@
+.. _Problem6_:
+
+===================================
+Problem 6 (Section 9.11 Problem 44)
+===================================
+
+If gene frequencies are in equilibrium, the genotypes AA, Aa, and aa occur with probabilities :math:`(1 - \theta)^2` , :math:`2 \theta (1 - \theta)`, and :math:`\theta^2`, respectively. Plato et al. (1964) published the following data on haptoglobin type in a sample of 190 people:
+
++-----------------+
+| Haptoglobin Type|
++=====+=====+=====+
+|Hp1-1|Hp1-2|Hp2-2|
++-----+-----+-----+
+|10   | 68  | 112 |
++-----+-----+-----+
+
+Derive and carry out a likelihood ratio test of the hypothesis :math:`H_0:\theta = \frac{1}{2}` versus :math:`H_1: θ \neq 1`.

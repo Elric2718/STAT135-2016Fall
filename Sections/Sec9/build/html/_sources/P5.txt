@@ -1,0 +1,28 @@
+.. _Problem5_:
+
+===================================
+Problem 5 (Section 9.11 Problem 43)
+===================================
+
+a. In 1965, a newspaper carried a story about a high school student who reported
+   getting 9207 heads and 8743 tails in 17,950 coin tosses. Is this a significant
+   discrepancy from the null hypothesis :math:`H_0: p = \frac{1}{2}`?
+
+b. Jack Youden, a statistician at the National Bureau of Standards, contacted the student and asked him exactly how he had performed the experiment (Youden 1974). To save time, the student had tossed groups of five coins at a time, and a younger brother had recorded the results, shown in the following table:
+
+   =============== =========
+   Number of Heads Frequency   
+   =============== =========
+         0            100
+	 1            524
+	 2           1080 
+	 3           1126
+	 4            655
+	 5            105
+   =============== =========
+
+   Are the data consistent with the hypothesis that all the coins were fair (:math:`p = \frac{1}{2}`)?
+
+   c. Are the data consistent with the hypothesis that all five coins had the same probability of heads but that this probability was not necessarily :math:`\frac{1}{2}` ? (Hint: Use the binomial distribution.)
+
+      

@@ -1,0 +1,57 @@
+.. _Problem4_:
+
+===================================
+Problem 4 (Section 9.11 Problem 42)
+===================================
+
+Nylon bars were tested for brittleness (Bennett and Franklin 1954). Each of 280 bars was molded under similar conditions and was tested in five places. Assuming that each bar has uniform composition, the number of breaks on a given bar should be binomially distributed with five trials and an unknown probability p of failure. If the bars are all of the same uniform strength, p should be the same for all of them; if they are of different strengths, p should vary from bar to bar. Thus, the null hypothesis is that the p’s are all equal. The following table summarizes the outcome of the experiment:
+
+========== =========
+Breaks/Bar Frequency
+========== =========
+    0         157
+    1         69
+    2         35
+    3         17
+    4          1
+    5          1
+========== =========
+
+a. Under the given assumption, the data in the table consist of 280 observations of independent binomial random variables. Find the mle of :math:`p`.
+
+b. Pooling the last three cells, test the agreement of the observed frequency distribution with the binomial distribution using Pearson’s chi-square test.
+
+c. Apply the test procedure derived in the previous problem.
+
+Solution:
+
+a. Suppose the number of breaks for each of the :math:`280` bars in 5 cases is :math:`y_i`, for :math:`i = 1, \dots, 280`.
+   
+   Under the null hypothesis, the mle of p is
+
+   :math:`hat{p}=\frac{157 \cdot 0 + 69 \cdot 1 + 35 \cdot 2 + 17 \cdot3 + 1 \cdot 4 + 1 \cdot 5}{5 \cdot 280} = 199/1400`
+
+b. The Pearson's chi-square statistics is
+
+   :math:`X^2 = \sum_{i=1}^m \frac{(x_i - n\hat{p})^2}{n\hat{p}}`
+
+   Under the null hypothesis, :math:`p_k(\hat{p}) = {5 \choose k} \hat{p}^k (1 - \hat{p})^{5 - k}`, for :math:`k = 0, \dots, 5`. Or we have :math:`p_0(\hat{p}) = (1 - \hat{p})^5 = 0.46460`, :math:`p_1(\hat{p}) = {5 \choose 1} \hat{p} \cdot (1 - \hat{p})^4 = 0.38491`, :math:`p_2(\hat{p}) = {5 \choose 2}\hat{p}^2 (1 - \hat{p})^3 = 0.12755`, :math:`p_3(\hat{p}) = {5 \choose 3} \hat{p}^3 (1 - \hat{p})^2 =  0.02114`, :math:`p_4(\hat{p}) = {5 \choose 4} \hat{p}^4 (1 - \hat{p})0.00175`, :math:`p_5(\hat{p}) = \hat{p}^5 = 0.00005`.
+   
+   Pooling the last three cells gives
+
+   :math:`X^2 = `
+
+   
+c. Suppose for the :math:`5` cases, the number of breaks bars are :math:`x_i` and
+   with out loss of generality, we can assume :math:`x_1 \leq x_2 \leq \dots \leq x_5`. The total number of bars in each case is all :math:`n_i = 280`. Then we have
+:math:`x_1 = 1`, :math:`x_2 = 1 + 1 = 2`, :math:`x_3 = 1 + 1 + 17 = 19`, :math:`x_4 = 1 + 1 + 17 + 35 = 54`, :math:`x_5 = 1 + 1+ 17 + 35 + 69 = 123`.
+   
+   Under the null hypothesis, the MLE for i.i.d binomial r.v.s is
+
+   :math:`\hat{p} = \frac{\sum_{i=1}^5 x_i}{\sum_{i=1}^5 n_i} = \frac{1 + 2 + 19 + 54 + 123}{280 * 5} = 199/1400`.
+
+   Under the alternative hypothesis, the MLE for a single binomial r.v. is
+
+   :math:`\hat{p}_i = \frac{x_i}{n_i},~ i = 1,\dots, 5`
+
+   Thus, :math:`\hat{p}_1 = 1/280`, :math:`\hat{p}_2 = 1/140`, :math:`\hat{p}_3 = 19/280`, :math:`\hat{p}_4 = 27/140`, :math:`\hat{p}_5 = 123/280`.

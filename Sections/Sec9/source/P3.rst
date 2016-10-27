@@ -1,0 +1,41 @@
+.. _Problem3_:
+
+===================================
+Problem 3 (Section 9.11 Problem 41)
+===================================
+
+Let :math:`X_i \sim bin(n_i, p_i)`, for :math:`i=1,\dots,m`, be independent. Derive a likelihood ratio test for the hypothesis
+
+:math:`H_0: p_1 = p_2 = \dots = p_m`
+
+against the alternative hypothesis that the :math:`p_i` are not all equal. What is the large sample distribution of the test statistic?
+
+Solution:
+
+The generalized likelihood ratio is
+
+:math:`\Lambda(x) = \frac{\max_{H_0} \prod_{i=1}^m {n_i \choose x_i} p_i^{x_i}(1 - p_i)^{n_i - x_i}}{\max \prod_{i=1}^m {n_i \choose x_i} p_i^{x_i}(1 - p_i)^{n_i - x_i}}`
+
+It's easy to show that under the null hypothesis, the MLE is :math:`\hat{p} = \frac{\sum_{i=1}^m x_i}{\sum_{i=1}^n n_i}` while the alternative hypothsis, the MLEs are :math:`\hat{p}_i = \frac{x_i}{n_i}`, for :math:`i = 1, \dots, m`. Then
+
+:math:`\max_{H_0} \prod_{i=1}^m {n_i \choose x_i} p_i^{x_i}(1 - p_i)^{n_i - x_i} = \prod_{i=1}^m {n_i \choose x_i} \hat{p}^{x_i} (1 - \hat{p})^{n_i - x_i} =  \hat{p}^{\sum_{i=1}^n n_i \hat{p}_i} (1 - \hat{p})^{\sum_{i=1}^m n_i(1 - \hat{p}_i)} \left(\prod_{i=1}^m {n_i \choose x_i}\right)`
+
+and
+
+:math:`\max \prod_{i=1}^m {n_i \choose x_i} p_i^{x_i}(1 - p_i)^{n_i - x_i} = \prod_{i=1}^m {n_i \choose x_i} \hat{p}_i^{x_i} (1 - \hat{p}_i)^{n_i - x_i} = \left(\prod_{i=1}^m {n_i \choose x_i}\right) \times \left( \prod_{i=1}^m \hat{p}_i^{n_i \hat{p}_i} (1 - \hat{p}_i)^{n_i (1 - \hat{p}_i)}\right)`
+
+Thus
+
+:math:`\Lambda(x) = \frac{\hat{p}^{\sum_{i=1}^m n_i \hat{p}_i} \times (1 - \hat{p})^{\sum_{i=1}^m n_i(1 - \hat{p}_i)}}{\prod_{i=1}^m (\hat{p}_i)^{n_i \hat{p}_i} (1 - \hat{p}_i)^{n_i(1 - \hat{p}_i)}}`
+
+Then we have
+
+:math:`-2\log (\Lambda) = 2\log \left\{\frac{\prod_{i=1}^m (\hat{p}_i)^{n_i \hat{p}_i} (1 - \hat{p}_i)^{n_i(1 - \hat{p}_i)}}{\hat{p}^{\sum_{i=1}^m n_i \hat{p}_i} \times (1 - \hat{p})^{\sum_{i=1}^m n_i(1 - \hat{p}_i)}}\right\}`
+
+By the same argument as Section 9.5 (Taylor Expansion), we have
+
+:math:`-2\log(\Lambda) \approx \sum_{i=1}^m \frac{(x_i - n_i \hat{p})^2}{n_i \hat{p} (1 - \hat{p})}`
+
+which follows a chi-squre distribution with :math:`df = m - 1` degrees of freedom.
+
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Problem 3 (Section 9.11 Problem 41) &#8212; Section 9 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Section 9 1.0 documentation" href="index.html" />
+    <link rel="next" title="Problem 4 (Section 9.11 Problem 42)" href="P4.html" />
+    <link rel="prev" title="Problem 2 (Section 9.11 Problem 39)" href="P2.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="problem-3-section-9-11-problem-41">
+<span id="problem3"></span><h1>Problem 3 (Section 9.11 Problem 41)<a class="headerlink" href="#problem-3-section-9-11-problem-41" title="Permalink to this headline">¶</a></h1>
+<p>Let <span class="math">\(X_i \sim bin(n_i, p_i)\)</span>, for <span class="math">\(i=1,\dots,m\)</span>, be independent. Derive a likelihood ratio test for the hypothesis</p>
+<p><span class="math">\(H_0: p_1 = p_2 = \dots = p_m\)</span></p>
+<p>against the alternative hypothesis that the <span class="math">\(p_i\)</span> are not all equal. What is the large sample distribution of the test statistic?</p>
+<p>Solution:</p>
+<p>The generalized likelihood ratio is</p>
+<p><span class="math">\(\Lambda(x) = \frac{\max_{H_0} \prod_{i=1}^m {n_i \choose x_i} p_i^{x_i}(1 - p_i)^{n_i - x_i}}{\max \prod_{i=1}^m {n_i \choose x_i} p_i^{x_i}(1 - p_i)^{n_i - x_i}}\)</span></p>
+<p>It&#8217;s easy to show that under the null hypothesis, the MLE is <span class="math">\(\hat{p} = \frac{\sum_{i=1}^m x_i}{\sum_{i=1}^n n_i}\)</span> while the alternative hypothsis, the MLEs are <span class="math">\(\hat{p}_i = \frac{x_i}{n_i}\)</span>, for <span class="math">\(i = 1, \dots, m\)</span>. Then</p>
+<p><span class="math">\(\max_{H_0} \prod_{i=1}^m {n_i \choose x_i} p_i^{x_i}(1 - p_i)^{n_i - x_i} = \prod_{i=1}^m {n_i \choose x_i} \hat{p}^{x_i} (1 - \hat{p})^{n_i - x_i} =  \hat{p}^{\sum_{i=1}^n n_i \hat{p}_i} (1 - \hat{p})^{\sum_{i=1}^m n_i(1 - \hat{p}_i)} \left(\prod_{i=1}^m {n_i \choose x_i}\right)\)</span></p>
+<p>and</p>
+<p><span class="math">\(\max \prod_{i=1}^m {n_i \choose x_i} p_i^{x_i}(1 - p_i)^{n_i - x_i} = \prod_{i=1}^m {n_i \choose x_i} \hat{p}_i^{x_i} (1 - \hat{p}_i)^{n_i - x_i} = \left(\prod_{i=1}^m {n_i \choose x_i}\right) \times \left( \prod_{i=1}^m \hat{p}_i^{n_i \hat{p}_i} (1 - \hat{p}_i)^{n_i (1 - \hat{p}_i)}\right)\)</span></p>
+<p>Thus</p>
+<p><span class="math">\(\Lambda(x) = \frac{\hat{p}^{\sum_{i=1}^m n_i \hat{p}_i} \times (1 - \hat{p})^{\sum_{i=1}^m n_i(1 - \hat{p}_i)}}{\prod_{i=1}^m (\hat{p}_i)^{n_i \hat{p}_i} (1 - \hat{p}_i)^{n_i(1 - \hat{p}_i)}}\)</span></p>
+<p>Then we have</p>
+<p><span class="math">\(-2\log (\Lambda) = 2\log \left\{\frac{\prod_{i=1}^m (\hat{p}_i)^{n_i \hat{p}_i} (1 - \hat{p}_i)^{n_i(1 - \hat{p}_i)}}{\hat{p}^{\sum_{i=1}^m n_i \hat{p}_i} \times (1 - \hat{p})^{\sum_{i=1}^m n_i(1 - \hat{p}_i)}}\right\}\)</span></p>
+<p>By the same argument as Section 9.5 (Taylor Expansion), we have</p>
+<p><span class="math">\(-2\log(\Lambda) \approx \sum_{i=1}^m \frac{(x_i - n_i \hat{p})^2}{n_i \hat{p} (1 - \hat{p})}\)</span></p>
+<p>which follows a chi-squre distribution with <span class="math">\(df = m - 1\)</span> degrees of freedom.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="P2.html" title="previous chapter">Problem 2 (Section 9.11 Problem 39)</a></li>
+      <li>Next: <a href="P4.html" title="next chapter">Problem 4 (Section 9.11 Problem 42)</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/P3.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Yuting Ye.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/P3.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
